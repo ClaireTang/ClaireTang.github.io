@@ -1,4 +1,4 @@
-const data_0 = [
+let data_0 = [
 	{
 		"url": "images/0/1.jpg"
 	},{
@@ -7,7 +7,7 @@ const data_0 = [
 		"url": "images/0/3.jpg"
 	}
 ]
-const data_1 = [
+let data_1 = [
 	{
 		"url": "images/1/1.jpg"
 	},{
