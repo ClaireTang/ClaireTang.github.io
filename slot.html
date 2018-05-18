@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />  
+		<meta http-equiv="Pragma" content="no-cache" />  
+		<meta http-equiv="Expires" content="0" />
+		<title>效果图</title>
+		
+	</head>
+	<body>
+		<div id="app">
+			<my-slot-tab :list="list" :selected="selected">
+				<template slot="title" scope="props">
+					<li :class="{active:selected==props.index, item:true}" @click="change(props.index)">{{ props.text }}</li>
+				</template>
+				<template slot="content">
+					<component :is="currentView"></component>
+				</template>
+			</my-slot-tab>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+		<script type="text/javascript">
+			// tab0
+			Vue.component('item0',{
+			 template : '<div>1111111content</div>'
+			});
+			// tab1
+			Vue.component('item1',{
+			 template : '<div>222222content</div>'
+			})
+			// tab2
+			Vue.component('item2',{
+				data(){
+					return{
+						message : 'fff'
+					}
+				},
+				template : `<div>
+					<span style="color:#f00">hello world</span>
+					<p><input type="text" v-model="message"></p>
+					<p>{{message}}</p>
+					</div>`
+			})
+			Vue.component('my-slot-tab', {
+				props : ['list', 'selected'],
+				template : `<div class="tab">
+					<div class="hd">
+						<ul class="clearfix">
+							<slot name="title" v-for="(item, index) in list" :index="index" :text="item.title"> </slot>
+						</ul>
+						<div class="bd">
+							<slot name="content"></slot>
+						</div>
+					</div>
+				</div>`
+			});
+			var app = new Vue({
+				el: '#app',
+				data: {
+					selected: 0,
+					currentView : 'item0',
+					list: [
+						{
+							title: '11111',
+						},
+						{
+							title: '22222',
+						},
+						{
+							title: '33333',
+						}
+					]
+				},
+				methods:{
+					change(index){
+						this.selected = index
+						this.currentView = 'item'+index;
+					}
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			// 给页面根元素html定义字体大小，使用rem
+			/*const resizeRoot = function(){
+				var deviceWidth = document.documentElement.clientWidth
+				if(deviceWidth > 750){
+					deviceWidth = 750
+				}
+				document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px'
+			}
+			resizeRoot()
+			window.onresize = function(){
+				resizeRoot()
+			};*/
+		</script>
+		
+	</body>
+</html>

@@ -1,12 +1,135 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>xxx</title>
-  </head>
-  <body>
-    dddddddd
-  </body>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />  
+		<meta http-equiv="Pragma" content="no-cache" />  
+		<meta http-equiv="Expires" content="0" />
+		<title>效果图</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.css">
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: "Microsoft YaHei","Source Han Sans SC","HanHei SC","PingFang SC","Helvetica Neue","Helvetica","Hiragino Sans GB","微软雅黑","Arial",sans-serif
+			}
+			ul{
+				font-size: 0;
+			}
+			ul li{
+				display: inline-block;
+				width: 25%;
+				font-size: 16px;
+				text-align: center;
+				color: #0cb46a;
+				padding: 2px 0;
+				margin: 8px 0;
+				border-right: 1px solid #0cb46a;
+			}
+			ul li:nth-child(4n){
+				border-right: 0;
+			}
+			ul li.active{
+				font-weight: 800;
+			}
+			.swiper-container {
+				width: 100%;
+				height: 300px;
+				overflow: hidden;
+				/*padding: 10px;*/
+			}
+			.swiper-container img{
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.cont{
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li :class="{active:key==curId}" v-for="item,key in typeList" @click="changeType(item.value)">{{item.label}}</li>
+			</ul>
+			<div class="cont">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" v-for="item,key in slideList"><img :src="item.url"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
+		<!-- <script src="./require.js"></script> -->
+		<script src="./data.json"></script>
+		<script type="text/javascript">
+		console.log(data_0,'pppp')
+			// let dataAll = require('./data.js')
+			var app = new Vue({
+				el: '#app',
+				data: {
+					curId: 0,
+					typeList: [
+						{
+							value: 0,
+							label: '简约',
+						},{
+							value: 1,
+							label: '北欧风',
+						},{
+							value: 2,
+							label: '工业风',
+						},{
+							value: 3,
+							label: '后现代',
+						},{
+							value: 4,
+							label: '新中式',
+						}
+					],
+					slideList: [
+						
+					]
+				},
+				created(){
+					this.slideList = dataAll[`data_${this.curId}`]
+				},
+				updated(){
+					
+				},
+				mounted(){
+					var mySwiper = new Swiper ('.swiper-container',{
+						autoplay:true,//等同于以下设置
+					})
+				},
+				methods:{
+					changeType(value){
+						this.curId = value
+						this.slideList = dataAll[`data_${value}`]
+					}
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			
+			// 给页面根元素html定义字体大小，使用rem
+			/*const resizeRoot = function(){
+				var deviceWidth = document.documentElement.clientWidth
+				if(deviceWidth > 750){
+					deviceWidth = 750
+				}
+				document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px'
+			}
+			resizeRoot()
+			window.onresize = function(){
+				resizeRoot()
+			};*/
+		</script>
+		
+	</body>
 </html>
