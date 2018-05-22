@@ -101,7 +101,7 @@
 				created(){
 					
 					// _this.slideList = _this.dataAll[`data_${_this.curId}`]
-					this.reqData()
+					this.reqData(0)
 				},
 				updated(){
 					
@@ -112,9 +112,10 @@
 					})
 				},
 				methods:{
-					reqData(){
+					reqData(num){
 						this.$http.get('data.json').then(res => {
-							this.slideList = res.data
+							this.dataAll = res.data
+							this.slideList = this.dataAll[`data_${num}`]
 						})
 					},
 					changeType(value){
