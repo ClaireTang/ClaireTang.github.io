@@ -64,6 +64,7 @@
 			
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
 		<script src="./require.js"></script>
 		<!-- <script src="./data.json"></script> -->
@@ -98,13 +99,9 @@
 					]
 				},
 				created(){
-					var _this = this
-					// define(function(require, exports, module) {
-						//  怎么做到的？
-						_this.dataAll = require('./data.js')
-						console.log(_this.dataAll)
-						_this.slideList = _this.dataAll[`data_${_this.curId}`]
-					// });
+					
+					// _this.slideList = _this.dataAll[`data_${_this.curId}`]
+					this.reqData()
 				},
 				updated(){
 					
@@ -115,6 +112,11 @@
 					})
 				},
 				methods:{
+					reqData(){
+						this.$http.get('data.json').then(res => {
+							this.slideList = res.data
+						})
+					},
 					changeType(value){
 						this.curId = value
 						this.slideList = this.dataAll[`data_${value}`]
