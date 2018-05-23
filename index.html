@@ -101,7 +101,7 @@
 					]
 				},
 				created(){
-					this.reqData(2)
+					this.reqData(0)
 				},
 				updated(){
 					
@@ -122,7 +122,6 @@
 					changeType(value){
 						this.curId = value
 						this.slideList = this.dataAll[`data_${value}`]
-						console.log(this.dataAll,'oooo')
 					}
 				}
 			})
