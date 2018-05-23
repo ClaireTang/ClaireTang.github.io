@@ -101,7 +101,7 @@
 					]
 				},
 				created(){
-					this.reqData(0)
+					this.reqData(2)
 				},
 				updated(){
 					
@@ -114,9 +114,9 @@
 				methods:{
 					reqData(num){
 						this.$http.get('data.json').then(res => {
-							console.log(res.data,'kkkkkggg')
+							console.log(res.data,'ggg')
 							this.dataAll = res.data
-							this.slideList = this.dataAll[`data_${num}`]
+							this.slideList = res.data[`data_${num}`]
 						})
 					},
 					changeType(value){
