@@ -118,9 +118,10 @@
 				methods:{
 					_initSwiper() {
 						this.mySwiper = new Swiper('.swiper-container', {
-							autoplay: true,
+							autoplay: {
+								disableOnInteraction: false
+							},
 							loop : true,
-							disableOnInteraction: false
 						})
 					},
 					_updateSwiper() {
