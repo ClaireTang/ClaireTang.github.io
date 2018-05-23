@@ -47,10 +47,11 @@
 			.cont{
 				padding: 10px;
 			}
+			[v-cloak] { display: none }
 		</style>
 	</head>
 	<body>
-		<div id="app">
+		<div id="app" v-cloak>
 			<ul>
 				<li :class="{active:key==curId}" v-for="item,key in typeList" @click="changeType(item.value)">{{item.label}}</li>
 			</ul>

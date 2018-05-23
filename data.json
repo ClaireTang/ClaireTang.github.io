@@ -1,5 +1,6 @@
 {
-	"data_0": [{
+	"data_0": [
+		{
 			"url": "images/0/1.jpg"
 		},
 		{
@@ -24,7 +25,8 @@
 			"url": "images/0/8.jpg"
 		}
 	],
-	"data_1": [{
+	"data_1": [
+		{
 			"url": "images/1/1.jpg"
 		},
 		{
@@ -37,7 +39,8 @@
 			"url": "images/1/4.jpg"
 		}
 	],
-	"data_2": [{
+	"data_2": [
+		{
 			"url": "images/2/1.jpg"
 		},
 		{
@@ -50,7 +53,8 @@
 			"url": "images/2/4.jpg"
 		}
 	],
-	"data_3": [{
+	"data_3": [
+		{
 			"url": "images/3/1.jpg"
 		},
 		{
@@ -66,7 +70,8 @@
 			"url": "images/3/5.jpg"
 		}
 	],
-	"data_4": [{
+	"data_4": [
+		{
 			"url": "images/4/1.jpg"
 		},
 		{
@@ -79,7 +84,8 @@
 			"url": "images/4/4.jpg"
 		},
 	],
-	"data_5": [{
+	"data_5": [
+		{
 			"url": "images/5/1.jpg"
 		},
 		{
@@ -91,5 +97,5 @@
 		{
 			"url": "images/5/4.jpg"
 		},
-	],
+	]
 }
