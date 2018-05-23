@@ -96,9 +96,8 @@
 						}
 					],
 					dataAll: {},
-					slideList: [
-						
-					]
+					slideList: [],
+					mySwiper: null
 				},
 				created(){
 					this.reqData(0)
@@ -107,11 +106,32 @@
 					
 				},
 				mounted(){
-					var mySwiper = new Swiper ('.swiper-container',{
-						autoplay:true,//等同于以下设置
-					})
+					this.swiperUpdate(); //页面一加载拉去数据创建节点
+				},
+				watch: {
+					//通过props传来的数据 和 组件一加载节点就创建成功 二者不是同步，实时监听的swiper(传递的值)的变化
+					slideList() {
+						this.swiperUpdate();
+					}
 				},
 				methods:{
+					_initSwiper() {
+						this.mySwiper = new Swiper('.swiper-container', {
+							autoplay: true,
+						})
+					},
+					_updateSwiper() {
+						this.$nextTick(() => {
+						 this.mySwiper.update(true); //swiper update的方法
+						})
+					},
+					swiperUpdate() {
+						if (this.mySwiper) { //节点存在
+							this._updateSwiper(); //更新
+						} else {
+							this._initSwiper(); //创建
+						}
+					},
 					reqData(num){
 						this.$http.get('./data.json').then(res => {
 							console.log(res,'hhh')
