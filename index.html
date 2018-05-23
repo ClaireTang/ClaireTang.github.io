@@ -81,16 +81,19 @@
 							label: '简约',
 						},{
 							value: 1,
-							label: '北欧风',
+							label: '现代',
 						},{
 							value: 2,
-							label: '工业风',
+							label: '工业',
 						},{
 							value: 3,
-							label: '后现代',
+							label: '北欧',
 						},{
 							value: 4,
 							label: '新中式',
+						},{
+							value: 5,
+							label: '田园',
 						}
 					],
 					dataAll: {},
@@ -99,8 +102,6 @@
 					]
 				},
 				created(){
-					
-					// _this.slideList = _this.dataAll[`data_${_this.curId}`]
 					this.reqData(0)
 				},
 				updated(){
