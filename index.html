@@ -114,7 +114,7 @@
 				methods:{
 					reqData(num){
 						this.$http.get('data.json').then(res => {
-							console.log(res,'kkkkk')
+							console.log(res.data,'kkkkkggg')
 							this.dataAll = res.data
 							this.slideList = this.dataAll[`data_${num}`]
 						})
